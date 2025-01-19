@@ -38,20 +38,20 @@ export default function Volunteer() {
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold mb-6">Our Members</h1>
+      <h1 className="text-4xl font-bold mb-6">Our Volunteers</h1>
 
       <div className="mb-8 flex gap-4 flex-wrap">
         <input
           type="text"
-          placeholder="Search members"
+          placeholder="Search Volunteer"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="p-2 border border-gray-300 rounded-md w-64"
+          className="p-2 border border-gray-300 rounded-md w-64 max-[452px]:w-full"
         />
         <select
           value={expertiseFilter}
           onChange={(e) => setExpertiseFilter(e.target.value)}
-          className="p-2 border border-gray-300 rounded-md"
+          className="p-2 border border-gray-300 rounded-md max-[452px]:w-[50%] max-[432px]:w-full"
         >
           <option value="">All Expertise</option>
           <option value="Oncology">Oncology</option>
@@ -61,7 +61,7 @@ export default function Volunteer() {
         <select
           value={locationFilter}
           onChange={(e) => setLocationFilter(e.target.value)}
-          className="p-2 border border-gray-300 rounded-md"
+          className="p-2 border border-gray-300 rounded-md max-[453px]:w-[48%] max-[432px]:w-full"
         >
           <option value="">All Locations</option>
           <option value="Mumbai">Mumbai</option>
@@ -70,13 +70,20 @@ export default function Volunteer() {
         </select>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        {filteredMembers.map((member) => (
-          <div key={member.id} className="bg-white p-6 rounded-lg shadow-md">
-            <h2 className="text-2xl font-semibold">{member.name}</h2>
-            <p className="text-sm text-gray-500">{member.expertise}</p>
-            <p className="text-sm mt-2">Location: {member.location}</p>
-            <p className="text-sm">Availability: {member.availability}</p>
+      <div className="grid grid-cols-3 max-[860px]:grid-cols-2 max-[578px]:grid-cols-1 gap-6">
+        {members.map((members, index) => (
+          <div
+            key={members.id}
+            className={`bg-white p-6 rounded-lg shadow-md ${
+              index === 2
+                ? "max-[860px]:col-span-2 max-[578px]:col-span-1"
+                : "col-span-1"
+            }`}
+          >
+            <h2 className="text-2xl font-semibold">{members.name}</h2>
+            <p className="text-sm text-gray-500">{members.expertise}</p>
+            <p className="text-sm mt-2">Location: {members.location}</p>
+            <p className="text-sm">Availability: {members.availability}</p>
             <button className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">
               View Profile
             </button>

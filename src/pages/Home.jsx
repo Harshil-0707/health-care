@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <div className="max-w-screen-lg mx-auto px-4">
       <div className="my-16">
-        <h1 className="text-4xl font-bold text-center">
+        <h1 className="text-4xl font-bold text-center max-[400px]:text-xl">
           Join India's Largest Cancer Care Community
         </h1>
         <p className="text-lg text-center text-gray-600 mt-4 mb-6">
