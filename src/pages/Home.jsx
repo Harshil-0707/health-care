@@ -46,7 +46,7 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div className="bg-white shadow-lg rounded-lg overflow-hidden">
+          <div className="bg-white shadow-lg rounded-lg overflow-hidden max-lg:col-span-2 max-sm:col-span-1">
             <div className="bg-blue-600 text-white p-4">
               <h3 className="text-xl">Attend Events</h3>
             </div>

@@ -26,9 +26,6 @@ function Desktopnavbar() {
           <RouterLink to="/" className="text-white hover:text-blue-200">
             Home
           </RouterLink>
-          <RouterLink to="/mentors" className="text-white hover:text-blue-200">
-            Mentors
-          </RouterLink>
           <RouterLink to="/members" className="text-white hover:text-blue-200">
             Healthcare Professional
           </RouterLink>
@@ -56,7 +53,7 @@ function Mobilenvbar() {
       />
       <div
         onClick={() => setShow(!show)}
-        className={`text-white fixed right-7 top-[14px] font-semibold text-2xl ${
+        className={`text-white fixed right-7 top-[14px] font-semibold text-2xl hover:cursor-pointer ${
           show ? "block" : "hidden"
         }`}
       >
@@ -74,7 +71,7 @@ function Mobilenvbar() {
           src={MenuIcon}
           alt="icon"
           onClick={() => setShow(!show)}
-          className={`${show ? "hidden" : "block"}`}
+          className={`hover:cursor-pointer ${show ? "hidden" : "block"}`}
         />
         <nav
           className={`${
@@ -90,13 +87,7 @@ function Mobilenvbar() {
           >
             Home
           </RouterLink>
-          <RouterLink
-            to="/mentors"
-            className="text-[#fff] font-bold"
-            onClick={() => setShow(!show)}
-          >
-            Mentors
-          </RouterLink>
+
           <RouterLink
             to="/members"
             className="text-[#fff] font-bold"
