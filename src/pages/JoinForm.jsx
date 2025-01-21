@@ -1,37 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
+import useFormHandler from "../hooks/useFormHandler";
 import InputFormElement from "../components/InputFormElement";
 
 export default function JoinForm() {
-  const [formData, setFormData] = useState({
+  const baseCase = {
     name: "",
     email: "",
     role: "volunteer",
     Expertise: "Oncology",
     Location: "Mumbai",
     Availability: "",
-  });
-
-  const volunteer = JSON.parse(localStorage.getItem("Volunteer")) || [];
-  const professional = JSON.parse(localStorage.getItem("Professional")) || [];
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (formData.role === "volunteer") {
-      const updatedVolunteer = [...volunteer, formData];
-      localStorage.setItem("Volunteer", JSON.stringify(updatedVolunteer));
-    } else {
-      const updatedProfessional = [...professional, formData];
-      localStorage.setItem("Professional", JSON.stringify(updatedProfessional));
-    }
-    setFormData({
-      name: "",
-      email: "",
-      role: "volunteer",
-      Expertise: "Oncology",
-      Location: "Mumbai",
-      Availability: "",
-    });
   };
+
+  const [formData, setFormData, handleSubmit] = useFormHandler(baseCase);
 
   return (
     <div className="max-w-xl mx-auto px-4 py-8">

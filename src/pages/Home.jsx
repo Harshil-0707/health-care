@@ -1,5 +1,5 @@
 import React from "react";
-// import Map from "../components/Map";
+import Map from "../components/Map";
 import { Link as RouterLink } from "react-router-dom";
 
 export default function Home() {
@@ -60,9 +60,9 @@ export default function Home() {
         </div>
       </div>
 
-      {/* <div>
+      <div className="mb-10">
         <Map />
-      </div> */}
+      </div>
     </div>
   );
 }

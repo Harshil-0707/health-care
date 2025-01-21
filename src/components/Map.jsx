@@ -1,23 +1,45 @@
+import l from "leaflet";
+import "leaflet/dist/leaflet.css";
 import { useEffect, useRef } from "react";
-import leaflet from "leaflet";
 
 export default function Map() {
   const mapRef = useRef();
 
   useEffect(() => {
-    mapRef.current = leaflet.map("map").setView([51.505, -0.09], 13);
-    leaflet
-      .tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        maxZoom: 19,
+    if (mapRef._leaflet_id) return;
+
+    mapRef.current = l
+      .map("map", {
+        attributionControl: false,
       })
-      .addTo(mapRef.current);
+      .setView([23.0225, 72.5714], 13);
+
+    l.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 19,
+    }).addTo(mapRef.current);
+
+    //add marker on click on the map
+    let marker = l.marker([23.0225, 72.5714]).addTo(mapRef.current);
+
+    mapRef.current.on("click", (e) => {
+      const { lat, lng } = e.latlng;
+      if (marker) mapRef.current.removeLayer(marker);
+
+      marker = l.marker([lat, lng]).addTo(mapRef.current);
+    });
+
+    return () => {
+      if (mapRef.current) {
+        mapRef.current.remove();
+      }
+    };
   }, []);
 
   return (
     <div
       id="map"
       ref={mapRef}
-      className="overflow-hidden h-[20rem] w-full"
+      className="overflow-hidden h-[25rem] w-full"
     ></div>
   );
 }
